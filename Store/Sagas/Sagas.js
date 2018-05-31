@@ -58,6 +58,8 @@ function* sagaRegistro(values){
                 'La dirección de correo electrónico está mal formateada',
                 [{text: 'OK'}]
             )
+        } else {
+            console.log(error);
         }
     }
 
@@ -68,9 +70,7 @@ autenticacion.signInWithEmailAndPassword(correo, password).then(success => succe
 
 function* sagaLogin(values){
     try {
-        console.log(values);
         const resultado = yield call(loginEnFirebase, values.datos);
-        console.log(resultado);
     } catch (error) {
         if(error.code === 'auth/user-not-found'){
             Alert.alert(

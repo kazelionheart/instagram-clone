@@ -54,7 +54,7 @@ const validate = (values) => {
 
     if(!values.password){
         errors.password = 'requerido';
-    } else if (values.password.length < 5){
+    } else if (values.password.length <= 5){
         errors.password = 'Debe ser mayor de 5 caracteres';
     }else if (values.password.length > 10){
         errors.password = 'Debe ser menor de 10 caracteres';
