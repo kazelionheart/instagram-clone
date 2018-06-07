@@ -1,13 +1,27 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import SeleccionarImagen from '../SeleccionarImagen';
+import { connect } from 'react-redux';
+import { actionCargarImagenPublicacion  } from '../../Store/ACCIONES';
 
 // create a component
 class SeleccionarGaleria extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>SeleccionarGaleria</Text>
+                <View style={styles.imagen}>
+                    <SeleccionarImagen imagen={this.props.imagen.imagen} cargar={this.props.cargarImagen} />
+                </View>
+                <View style={styles.texto}>
+                    <Text>SeleccionarGaleria</Text>
+                </View>
+                <View style={styles.boton}>
+                    <Button 
+                    title="Publicar"
+                    onPress={() => { console.log("Publicando...")}}
+                    />
+                </View>
             </View>
         );
     }
@@ -17,11 +31,33 @@ class SeleccionarGaleria extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: '#f9f9f9',
     },
+    imagen: {
+        flex: 2
+    },
+    texto: {
+        flex: 2
+    },
+    boton: {
+        flex: 1
+    }
 });
 
 //make this component available to the app
-export default SeleccionarGaleria;
+const mapStateToProps = (state) => {
+    return {
+        imagen: state.reducerImagenPublicacion
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        cargarImagen: (imagen) => {
+            dispatch(actionCargarImagenPublicacion(imagen))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SeleccionarGaleria);

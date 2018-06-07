@@ -10,6 +10,6 @@ const StackAdd = StackNavigator({
     Seleccion: {
         screen: SeleccionarGaleria
     }
-});
+}); 
 
 export { StackAdd };

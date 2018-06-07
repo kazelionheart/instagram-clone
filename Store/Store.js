@@ -45,10 +45,22 @@ const reducerImagenSignUp = (state = {imagen: null}, action) => {
     }
 }
 
+const reducerImagenPublicacion = (state = {imagen: null}, action) => {
+    switch (action.type) {
+        case CONSTANTES.CARGAR_IMAGEN_PUBLICACION:
+            return {imagen: action.imagen};
+        case CONSTANTES.LIMPIAR_IMAGEN_PUBLICACION:
+            return {imagen: null};
+        default:
+            return state;
+    }
+}
+
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducers = combineReducers({
+    reducerImagenPublicacion,
     reducerImagenSignUp,
     reducerSesion,
     reducerPrueba,

@@ -19,11 +19,20 @@ export const actionCerrarSesion = () => ({
     type: CONSTANTES.CERRAR_SESION
 });
 
-export const actionCargarImagenSignUp = (imagen) => ({
+export const actionCargarImagenSignUp = imagen => ({
     type: CONSTANTES.CARGAR_IMAGEN_SIGNUP,
     imagen
 });
 
 export const actionLimpiarImagenSignUp = () => ({
     type: CONSTANTES.LIMPIAR_IMAGEN_SIGNUP
+});
+
+export const actionCargarImagenPublicacion = imagen => ({
+    type: CONSTANTES.CARGAR_IMAGEN_PUBLICACION,
+    imagen
+});
+
+export const actionLimpiarImagenPublicacion = () => ({
+    type: CONSTANTES.LIMPIAR_IMAGEN_PUBLICACION
 });
