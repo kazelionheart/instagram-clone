@@ -4,11 +4,11 @@ import SeleccionarGaleria from './SeleccionarGaleria';
 
 
 const StackAdd = StackNavigator({
-    Home: {
+    Add: {
         screen: Add
     },
     Seleccion: {
-        screen: SeleccionarGaleria
+        screen: SeleccionarGaleria,
     }
 }); 
 

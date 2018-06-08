@@ -7,11 +7,14 @@ import { actionCargarImagenPublicacion  } from '../../Store/ACCIONES';
 
 // create a component
 class SeleccionarGaleria extends Component {
+    static navigationOptions = {
+        tabBarVisible: false,
+    };
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.imagen}>
-                    <SeleccionarImagen imagen={this.props.imagen.imagen} cargar={this.props.cargarImagen} />
+                    <SeleccionarImagen imagen={this.props.imagen.imagen} cargar={this.props.cargarImagen} radius />
                 </View>
                 <View style={styles.texto}>
                     <Text>SeleccionarGaleria</Text>
