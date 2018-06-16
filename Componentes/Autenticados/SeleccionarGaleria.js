@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import SeleccionarImagen from '../SeleccionarImagen';
 import { connect } from 'react-redux';
+import { blur } from 'redux-form';
 import { actionCargarImagenPublicacion  } from '../../Store/ACCIONES';
+import SeleccionarGaleriaForm from './SeleccionarGaleriaForm';
 
 // create a component
 class SeleccionarGaleria extends Component {
     static navigationOptions = {
         tabBarVisible: false,
     };
+
+
     render() {
         return (
             <View style={styles.container}>
@@ -17,7 +21,9 @@ class SeleccionarGaleria extends Component {
                     <SeleccionarImagen imagen={this.props.imagen.imagen} cargar={this.props.cargarImagen} radius />
                 </View>
                 <View style={styles.texto}>
-                    <Text>SeleccionarGaleria</Text>
+                    <SeleccionarGaleriaForm 
+                    imagen={this.props.imagen.imagen}
+                    registro={(values) => {console.log(values)}}/>
                 </View>
                 <View style={styles.boton}>
                     <Button 
@@ -59,6 +65,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         cargarImagen: (imagen) => {
             dispatch(actionCargarImagenPublicacion(imagen))
+            dispatch(blur('SeleccionarGaleriaForm', 'imagen',Date.now()));
         }
     }
 }
